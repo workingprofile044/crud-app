@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class NoteCard extends Component {
-    handleDelete = async () => {
-        await axios.delete(`http://localhost:7070/notes/${this.props.note.id}`);
-        this.props.refreshNotes();
+    handleDelete = () => {
+        this.props.onDelete(this.props.note.id);
     };
 
     render() {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class AddNoteForm extends Component {
     state = {
@@ -10,13 +9,9 @@ class AddNoteForm extends Component {
         this.setState({ content: event.target.value });
     };
 
-    handleSubmit = async (event) => {
+    handleSubmit = (event) => {
         event.preventDefault();
-        await axios.post('http://localhost:7070/notes', {
-            id: 0,
-            content: this.state.content,
-        });
-        this.props.refreshNotes();
+        this.props.onAdd(this.state.content);
         this.setState({ content: '' });
     };
 
